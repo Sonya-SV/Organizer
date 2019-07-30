@@ -8,7 +8,7 @@ import static com.training.organizer.model.entity.DBObjects.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import java.util.Calendar;
 import static org.junit.Assert.assertArrayEquals;
 
 import java.util.*;
