@@ -1,5 +1,8 @@
 package com.training.organizer.model.entity;
 
+import com.training.organizer.model.Frequency;
+import com.training.organizer.model.Importance;
+
 import java.sql.Time;
 import java.util.*;
 
@@ -62,8 +65,8 @@ public enum DBObjects {
         return event;
     }
 
-    public static ArrayList<Event> getDBObjectsToArray() {
-        ArrayList<Event> output = new ArrayList<>();
+    public static List<Event> getDBObjectsToArray() {
+        List<Event> output = new ArrayList<>();
         for (DBObjects obj : DBObjects.values())
             output.add(obj.event);
         return output;

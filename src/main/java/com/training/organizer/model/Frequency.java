@@ -1,4 +1,4 @@
-package com.training.organizer.model.entity;
+package com.training.organizer.model;
 
 public enum Frequency {
     DONT_REPEAT("dont.repeat"),

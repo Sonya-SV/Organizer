@@ -72,7 +72,7 @@ public class ModelTest {
         hamcrestMatchers.add(READ.getDBEvent());
         hamcrestMatchers.add(CLEANING.getDBEvent());
 
-        ArrayList<Event> checkArray = model.selectEventsByDate(checkDate, COMPARE_BY_DATE);
+        List<Event> checkArray = model.selectEventsByDate(checkDate, COMPARE_BY_DATE);
         Collections.sort(hamcrestMatchers, COMPARE_BY_DATE);
 
         assertArrayEquals(checkArray.toArray(), (hamcrestMatchers).toArray());
@@ -93,7 +93,7 @@ public class ModelTest {
         hamcrestMatchers.add(BIRTHDAY.getDBEvent());
         hamcrestMatchers.add(CLEANING.getDBEvent());
 
-        ArrayList<Event> checkArray = model.selectEventsByDateRange(startDate, endDate, COMPARE_BY_DATE);
+        List<Event> checkArray = model.selectEventsByDateRange(startDate, endDate, COMPARE_BY_DATE);
         Collections.sort(hamcrestMatchers, COMPARE_BY_DATE);
 
         assertArrayEquals(checkArray.toArray(), (hamcrestMatchers).toArray());

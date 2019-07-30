@@ -1,5 +1,8 @@
 package com.training.organizer.model.entity;
 
+import com.training.organizer.model.Frequency;
+import com.training.organizer.model.Importance;
+
 import java.util.Calendar;
 
 public abstract class Event {

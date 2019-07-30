@@ -1,6 +1,11 @@
 package com.training.organizer.model.entity;
 
+import com.training.organizer.model.Frequency;
+import com.training.organizer.model.Importance;
+
 import java.util.Calendar;
+
+import static com.training.organizer.view.ITextConstant.*;
 
 public class WorkEvent extends Event {
     private String person;
@@ -23,6 +28,8 @@ public class WorkEvent extends Event {
     public String getPerson() {
         return person;
     }
+
+
 
 }
 

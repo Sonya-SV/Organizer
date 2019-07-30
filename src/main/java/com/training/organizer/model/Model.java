@@ -7,14 +7,15 @@ import java.util.*;
 
 public class Model {
 
+
     /**
      * @param comparator - sorting by date or by importance
      * @return sorted by comparator arrayList of events matching the date
      * @see Model#COMPARE_BY_DATE
      * @see Model#COMPARE_BY_IMPORTANCE
      */
-    public ArrayList<Event> selectEventsByDate(Calendar date, Comparator<Event> comparator) {
-        ArrayList<Event> output = new ArrayList<>();
+    public List<Event> selectEventsByDate(Calendar date, Comparator<Event> comparator) {
+        List<Event> output = new ArrayList<>();
         for (Event event : DBObjects.getDBObjectsToArray()) {
             if (isFitToDate(date, event)) {
                 output.add(event);
@@ -30,7 +31,7 @@ public class Model {
      * @see Model#COMPARE_BY_DATE
      * @see Model#COMPARE_BY_IMPORTANCE
      */
-    public ArrayList<Event> selectEventsByDateRange(Calendar dateStart, Calendar dateEnd, Comparator<Event> comparator) {
+    public List<Event> selectEventsByDateRange(Calendar dateStart, Calendar dateEnd, Comparator<Event> comparator) {
         ArrayList<Event> output = new ArrayList<>();
         for (Event event : DBObjects.getDBObjectsToArray()) {
             if (isFitToDateRange(dateStart, dateEnd, event)) {
@@ -45,11 +46,11 @@ public class Model {
      * @param forecastInDays - period of time for planned events
      * @return map : key - date, value - arrayList of events
      */
-    public Map<Calendar, ArrayList<Event>> getNotifyEvents(Calendar startDate, int forecastInDays) {
+    public Map<Calendar, List<Event>> getNotifyEvents(Calendar startDate, int forecastInDays) {
         Calendar endDate = (Calendar) startDate.clone();
         endDate.add(Calendar.DATE, forecastInDays);
 
-        Map<Calendar, ArrayList<Event>> mapEvent = new TreeMap<>();
+        Map<Calendar, List<Event>> mapEvent = new TreeMap<>();
         Calendar currentDate = (Calendar) startDate.clone();
 
         while (currentDate.before(endDate)) {

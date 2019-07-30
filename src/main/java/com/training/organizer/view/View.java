@@ -59,8 +59,8 @@ public class View {
      * @see Model #getNotifyEvents()
      *
      */
-    public void showNearestEvent(Map<Calendar, ArrayList<Event>> map) {
-        for (Map.Entry<Calendar, ArrayList<Event>> entry : map.entrySet()) {
+    public void showNearestEvent(Map<Calendar, List<Event>> map) {
+        for (Map.Entry<Calendar, List<Event>> entry : map.entrySet()) {
             System.out.println(SPLIT + (stringFormatDate(entry.getKey()) + SPLIT));
             showEventsInArray(entry.getValue());
         }
@@ -71,8 +71,9 @@ public class View {
      * @param events
      *
      */
-    public void showEventsInArray(ArrayList<Event> events) {
+    public void showEventsInArray(List<Event> events) {
         for (Event event : events)
+//           printMessage((event.toString()));
             if (event.getClass() == PersonalEvent.class)
                 showPersonalEvent((PersonalEvent) event);
             else

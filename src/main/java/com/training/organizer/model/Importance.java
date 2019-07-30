@@ -1,4 +1,4 @@
-package com.training.organizer.model.entity;
+package com.training.organizer.model;
 
 public enum Importance {
     LOW("low"), MEDIUM("medium"), HIGH("high");
