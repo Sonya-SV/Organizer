@@ -5,6 +5,9 @@ import com.training.organizer.model.Importance;
 import java.util.Calendar;
 import java.sql.Time;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum DBObjects {
 
@@ -65,12 +68,11 @@ public enum DBObjects {
         return event;
     }
 
-    public static List<Event> getDBObjectsToArray() {
-        List<Event> output = new ArrayList<>();
-        for (DBObjects obj : DBObjects.values())
-            output.add(obj.event);
-        return output;
-    }
+//    public static List<Event> getDBObjectsToArray() {
+//        return Stream.of(DBObjects.values())
+//                .map(DBObjects::getDBEvent)
+//                .collect(Collectors.toList());
+//    }
 
 }
 

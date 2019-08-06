@@ -3,23 +3,24 @@ package com.training.organizer.model.entity;
 import com.training.organizer.model.Frequency;
 import com.training.organizer.model.Importance;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public abstract class Event {
 
     private String title;
-    private Calendar date;
+    private LocalDate date;
     private Importance importance;
     private Frequency frequency;
 
     Event() {
         this.title = "";
-        this.date = Calendar.getInstance();
+        this.date = LocalDate.now();
         this.importance = Importance.MEDIUM;
         this.frequency = Frequency.DONT_REPEAT;
     }
 
-    Event(String title, Calendar date, Importance importance, Frequency frequency) {
+    Event(String title, LocalDate date, Importance importance, Frequency frequency) {
         this.title = title;
         this.date = date;
         this.importance = importance;
@@ -30,7 +31,7 @@ public abstract class Event {
         return title;
     }
 
-    public Calendar getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

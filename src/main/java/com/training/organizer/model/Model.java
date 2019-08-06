@@ -4,6 +4,8 @@ import com.training.organizer.model.entity.DBObjects;
 import com.training.organizer.model.entity.Event;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Model {
 
@@ -15,14 +17,11 @@ public class Model {
      * @see Model#COMPARE_BY_IMPORTANCE
      */
     public List<Event> selectEventsByDate(Calendar date, Comparator<Event> comparator) {
-        List<Event> output = new ArrayList<>();
-        for (Event event : DBObjects.getDBObjectsToArray()) {
-            if (isFitToDate(date, event)) {
-                output.add(event);
-            }
-        }
-        Collections.sort(output, comparator);
-        return output;
+        return Stream.of(DBObjects.values())
+                .map(DBObjects::getDBEvent)
+                .filter(event -> isFitToDate(date, event))
+                .sorted(comparator)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -32,14 +31,11 @@ public class Model {
      * @see Model#COMPARE_BY_IMPORTANCE
      */
     public List<Event> selectEventsByDateRange(Calendar dateStart, Calendar dateEnd, Comparator<Event> comparator) {
-        ArrayList<Event> output = new ArrayList<>();
-        for (Event event : DBObjects.getDBObjectsToArray()) {
-            if (isFitToDateRange(dateStart, dateEnd, event)) {
-                output.add(event);
-            }
-        }
-        Collections.sort(output, comparator);
-        return output;
+        return Stream.of(DBObjects.values())
+                .map(DBObjects::getDBEvent)
+                .filter(event -> isFitToDateRange(dateStart, dateEnd, event))
+                .sorted(comparator)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -61,17 +57,10 @@ public class Model {
         return mapEvent;
     }
 
-    public static Comparator<Event> COMPARE_BY_DATE = new Comparator<Event>() {
-        public int compare(Event one, Event other) {
-            return one.getDate().compareTo(other.getDate());
-        }
-    };
+    public static Comparator<Event> COMPARE_BY_DATE = Comparator.comparing(Event::getDate);
 
-    public static Comparator<Event> COMPARE_BY_IMPORTANCE = new Comparator<Event>() {
-        public int compare(Event one, Event other) {
-            return other.getImportance().compareTo(one.getImportance());
-        }
-    };
+    public static Comparator<Event> COMPARE_BY_IMPORTANCE = Comparator.comparing(Event::getImportance);
+
 
     boolean isFitToDate(Calendar currentDate, Event event) {
         switch (event.getFrequency()) {

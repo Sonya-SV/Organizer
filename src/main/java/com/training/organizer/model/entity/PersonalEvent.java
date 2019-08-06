@@ -6,9 +6,6 @@ import com.training.organizer.model.Importance;
 import java.sql.Time;
 import java.util.Calendar;
 
-import static com.training.organizer.view.ITextConstant.*;
-import static com.training.organizer.view.ITextConstant.TIME_START;
-
 public class PersonalEvent extends Event {
     private String location;
     private Time timeStart;
